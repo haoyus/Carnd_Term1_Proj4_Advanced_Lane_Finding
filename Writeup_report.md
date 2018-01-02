@@ -19,12 +19,12 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/Camera_Cali.png "Cam Calib"
 [image2]: ./output_images/Straight_Ori_vs_Undist.JPG "Straight_Ori_vs_Undist"
-[image3]: ./output_images/Test2_ColorBin_vs_CombThresh.JPG "Binary Example"
-[image4]: ./output_images/Straight_Undist_vs_Warped.JPG "Warp Example"
-[image5]: ./output_images/Test2_CombBin_vs_WarpedBin.JPG "Warped Bin"
-[image6]: ./output_images/sliding_window_curve.png "sliding window for curve"
+[image3]: ./output_images/Test4_ColorBin_vs_CombThresh.JPG "Binary Example"
+[image4]: ./output_images/Test4_Undist_vs_Warped.JPG "Warp Example"
+[image5]: ./output_images/Test4_CombBin_vs_WarpedBin.JPG "Warped Bin"
+[image6]: ./output_images/Test4_sliding_window.JPG "sliding window for curve"
 [image7]: ./output_images/Four_Points.JPG "picking 4 points"
-[image8]: ./output_images/Test2out.JPG "output example image"
+[image8]: ./output_images/Test4out.JPG "output example image"
 [video1]: ./project_video_out.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -103,13 +103,13 @@ def warp(img):
     return warped
 ```
 
-Apply this function on the test image `straight_lines2.jpg` and get the following result:
+Apply this function on the test image `test4.jpg` and get the following result:
 
 ![alt text][image4]
 
 #### 2. Perform color transforms and gradients threshold methods to create a thresholded binary image.
 
-I used a combination of S channel of HLS and X-gradient thresholds to generate a binary image (cells 10 through 16 in `Pipeline.ipynb`).  Here's an example of my output for this step. This is generated using `test_images/test2.jpg`
+Previously, I used a combination of S channel of HLS and X-gradient thresholds to generate a binary image (cells 10 through 16 in `Pipeline.ipynb`). **For this re-submission, I'm using the combination of L channel of HLS and B channel of LAB thresholds instead. This gives me a better result.**  Here's an example of my output for this step. This is generated using `test_images/test4.jpg`
 
 ![alt text][image3]
 
@@ -185,7 +185,7 @@ def draw_lane_area(image_in_undist,warped_combo,left_fit,right_fit,Minv,ave_curv
     return result
 ```
 
-Here is an example of my result on a test image:
+Here is an example of my result on the test4 image:
 
 ![alt text][image8]
 
@@ -193,7 +193,7 @@ Here is an example of my result on a test image:
 
 #### 6. Pipeline output video.
 
-Here's a [link to my video result](https://youtu.be/24lxecUt1AA)
+Here's a [link to my video result](https://youtu.be/UN_8WXnl_9Y)
 
 ---
 
@@ -202,3 +202,7 @@ Here's a [link to my video result](https://youtu.be/24lxecUt1AA)
 #### 1. One problem that I encountered: processing time
 
 One problem that I encountered while processing the project video is that the processing time is too long (18 minutes). This is because I did not use a less time-consuming lane finding algorithm and the lane class method, due to not having enough time to work on this project. I will try other motheds later.
+
+#### 2. What can be done to improve?
+
+The current pipeline produces result that looks ok, even for scenarios with strong shadows. However, there are still noises during shadowed scenarios. So some new methods can definitely be implemented to improve the stability of the algorithm. For example, a lane line class can be defined to store lane data detected in each frame, so that lane data can be compared from frame to frame. This way we can narrow down the searching range of each frame if lane lines are detected in the previous frame. More importantly, noise and error that only appear on 1 or 2 single frames can be ignored based on the lane info of previous frames.
