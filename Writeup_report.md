@@ -19,9 +19,9 @@ The goals / steps of this project are the following:
 
 [image1]: ./output_images/Camera_Cali.png "Cam Calib"
 [image2]: ./output_images/Straight_Ori_vs_Undist.JPG "Straight_Ori_vs_Undist"
-[image3]: ./output_images/Test2_ColorBin_vs_CombThresh.jpg "Binary Example"
+[image3]: ./output_images/Test2_ColorBin_vs_CombThresh.JPG "Binary Example"
 [image4]: ./output_images/Straight_Undist_vs_Warped.JPG "Warp Example"
-[image5]: ./output_images/Test2_CombBin_vs_WarpedBin.jpg "Warped Bin"
+[image5]: ./output_images/Test2_CombBin_vs_WarpedBin.JPG "Warped Bin"
 [image6]: ./output_images/sliding_window_curve.png "sliding window for curve"
 [image7]: ./output_images/Four_Points.JPG "picking 4 points"
 [image8]: ./output_images/Test2out.JPG "output example image"
@@ -34,7 +34,7 @@ The goals / steps of this project are the following:
 ---
 
 
-### 1. Camera Calibration
+### Camera Calibration
 
 #### To calibrate the carmera, we need to compute the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
 
